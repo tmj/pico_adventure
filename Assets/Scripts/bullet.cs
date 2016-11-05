@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bullet : MonoBehaviour {
+public class Bullet : MonoBehaviour {
 
-  public int speed = 10;
+	public int speed = 3;
+
+	Vector3 dir;
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +17,16 @@ public class bullet : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
+	/// <summary>
+	/// 弾の方向を設定する
+	/// </summary>
+	/// <param name="dir"></param>
+	public void SetDirection(Vector3 dir) {
+		this.dir = dir;
+	}
+
     // Update is called once per frame
     void Update () {
-		GetComponent<Rigidbody2D>().velocity = transform.right.normalized * speed;
+		GetComponent<Rigidbody2D>().velocity = dir * speed;
 	}
 }
