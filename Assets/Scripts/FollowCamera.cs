@@ -3,6 +3,8 @@ using System.Collections;
 
 public class FollowCamera : MonoBehaviour {
 
+	public Stage stage;
+
 	public GameObject target;
 
 	// Use this for initialization
@@ -12,10 +14,16 @@ public class FollowCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		Vector3 pos = target.transform.position;
 		pos.y += 2;
 		pos.z = this.transform.position.z;
-		this.transform.position = pos;
 
+		// カメラ追従限界Y軸
+		if(pos.y < stage.deadline.CamStopPosY) {
+			pos.y = stage.deadline.CamStopPosY;
+		}
+
+		this.transform.position = pos;
 	}
 }
