@@ -7,16 +7,6 @@ public class Bullet : MonoBehaviour {
 
 	Vector3 dir;
 
-	// Use this for initialization
-	void Start () {
-        Invoke("DestroySelf", 1.0f);
-    }
-
-    void DestroySelf()
-    {
-        Destroy(this.gameObject);
-    }
-
 	/// <summary>
 	/// 弾の方向を設定する
 	/// </summary>

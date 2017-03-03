@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9764bbc1449b1c4e8e694579a9e23e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 820993388}
+  character: {fileID: 820993393}
   stage: {fileID: 134371872}
 --- !u!4 &460459783
 Transform:
@@ -236,7 +236,7 @@ GameObject:
   - 114: {fileID: 820993393}
   m_Layer: 0
   m_Name: chara01
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
