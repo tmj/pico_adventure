@@ -69,6 +69,7 @@ public class CharacterController: MonoBehaviour {
 	void Fire() {
 		GameObject go = (GameObject)Instantiate(this.bullet);
 		go.transform.position = this.transform.position;
+		go.transform.position += new Vector3( (this.sprite.flipX ? -1.0f : 1.0f), 0.0f, 0.0f);
 		go.transform.localScale = Vector3.one;
 
 		go.GetComponent<Bullet>().SetDirection(this.sprite.flipX ? Vector3.left : Vector3.right);
