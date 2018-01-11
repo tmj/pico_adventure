@@ -3,14 +3,12 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
+	Vector3 defaultPos;
+
 	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		CharacterObserver.Instance.onReset += this.SetPositionDefault;
+		defaultPos = transform.position;
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
@@ -18,6 +16,10 @@ public class Enemy : MonoBehaviour {
 		if(collision.gameObject.tag == TagDefine.Player) {
 			collision.gameObject.SendMessage("Die");
 		}
+	}
 
+	public void SetPositionDefault() {
+		transform.position = defaultPos;
+		transform.rotation = Quaternion.identity;
 	}
 }

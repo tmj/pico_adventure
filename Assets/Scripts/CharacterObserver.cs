@@ -3,10 +3,22 @@ using System.Collections;
 
 public class CharacterObserver : MonoBehaviour {
 
+	public static CharacterObserver Instance {
+		get { return instance; }
+	}
+	static CharacterObserver instance;
+
 	public CharacterController character;
-
-
 	public Stage stage;
+	public System.Action onReset;
+
+	void Awake() {
+		if(instance == null) {
+			instance = this;
+		} else {
+			Destroy(this);
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +30,19 @@ public class CharacterObserver : MonoBehaviour {
 		if(character.transform.position.y < stage.deadline.PosY) {
 			RepositionPlayer();
 		}
+		else if(stage.clearLine.transform.position.x < character.transform.position.x) {
+			stage.clearLine.clearText.gameObject.SetActive(true);
+			
+		}
 	}
 
-	void RepositionPlayer() {
+	public void RepositionPlayer() {
 		character.transform.position = stage.SpawnPointPosition;
+		stage.clearLine.clearText.gameObject.SetActive(false);
+
+		if(onReset != null) {
+			onReset();
+		}
 	}
 
 	void OnPlayerDead() {
