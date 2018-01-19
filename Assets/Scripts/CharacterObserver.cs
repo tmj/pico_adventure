@@ -30,10 +30,6 @@ public class CharacterObserver : MonoBehaviour {
 		if(character.transform.position.y < stage.deadline.PosY) {
 			RepositionPlayer();
 		}
-		else if(stage.clearLine.transform.position.x < character.transform.position.x) {
-			stage.clearLine.clearText.gameObject.SetActive(true);
-			
-		}
 	}
 
 	public void RepositionPlayer() {
